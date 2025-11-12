@@ -1,0 +1,61 @@
+databaseChangeLog:
+  # --- Changeset 1: O Schema Inicial ---
+  - changeSet:
+      id: v1.0.0-initial-schema
+      author: shin (migration)
+      changes:
+        - sqlFile:
+            path: db/changelog/v1.0.0_initial_schema.sql
+            splitStatements: true
+            stripComments: true
+            endDelimiter: ";"
+            encoding: UTF-8
+      
+  # --- Changeset 2: Os Papéis Iniciais ---
+  - changeSet:
+      id: v1.0.1-seed-roles
+      author: shin (seed)
+      changes:
+        - sqlFile:
+            path: db/changelog/v1.0.1_seed_initial_roles.sql
+            splitStatements: true
+            stripComments: true
+            endDelimiter: ";"
+            encoding: UTF-8
+
+  # --- Changeset 3: Super Admin & Permissões ---
+  - changeSet:
+      id: v1.0.2-seed-permissions-and-superadmin
+      author: shin (seed)
+      dependsOn: v1.0.1-seed-roles
+      changes:
+        - sqlFile:
+            path: db/changelog/v1.0.2_seed_permissions_and_superadmin.sql
+            splitStatements: true
+            stripComments: true
+            endDelimiter: ";"
+            encoding: UTF-8
+
+  # --- Changeset 4: Permissão de Configurações da Empresa ---
+  - changeSet:
+      id: v1.0.3-add-company-settings-permission
+      author: shin (seed)
+      changes:
+        - sqlFile:
+            path: db/changelog/v1.0.3_add_company_permission.sql
+            splitStatements: true
+            stripComments: true
+            endDelimiter: ";"
+            encoding: UTF-8
+
+  # --- Changeset 5: Ajustar tamanho do campo status ---
+  - changeSet:
+      id: v1.0.4-subscription-status-length
+      author: shin (seed)
+      changes:
+        - sqlFile:
+            path: db/changelog/v1.0.4_fix_subscription_status_length.sql
+            splitStatements: true
+            stripComments: true
+            endDelimiter: ";"
+            encoding: UTF-8

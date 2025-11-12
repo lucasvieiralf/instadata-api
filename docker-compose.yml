@@ -1,0 +1,22 @@
+# Define a versão do Docker Compose
+version: '3.8'
+
+# Define os serviços (contêineres) que queremos
+services:
+  # 1. Banco de Dados MySQL
+  mysql-db:
+    image: mysql:8
+    container_name: mysql-db-compose
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: access_manager_db
+    volumes:
+      - mysql-data:/var/lib/mysql
+    restart: unless-stopped # Garante que ele reinicie com o Docker (ex: ao ligar o PC)
+
+# Define os volumes (onde os dados serão salvos)
+volumes:
+  mysql-data:
+    driver: local

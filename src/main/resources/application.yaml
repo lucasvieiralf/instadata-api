@@ -1,0 +1,36 @@
+# Configuração do Servidor
+server:
+  port: 8080
+  servlet:
+    context-path: /api/v1 # Versionamento da API
+
+# Configurações do Spring
+spring:
+  # 1. Configuração do Banco de Dados (DataSource)
+  datasource:
+    url: jdbc:mysql://localhost:3306/access_manager_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: admin # Senha usada para a Docker ou BD Local
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # 2. Configuração do JPA (Hibernate)
+  jpa:
+    hibernate:
+      ddl-auto: none # Desativado devido ao Liquibase
+    show-sql: true # Mostrar os SQLs no console
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect # Informa o dialeto SQL
+        format_sql: true # Formata o SQL exibido no console
+
+  # 3. Configuração do Liquibase
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml # Arquivo master do Liquibase
+    enabled: true
+
+# 4. Configuração do JWT
+application:
+  security:
+    jwt:
+      secret-key: "aiJMoSjkjjy09G33Op4oXaIKGBgItVAG2dqyEw7NmNR2XUChkWicsNNUPqy8TRLT"
+      expiration: 86400000 # 24 horas em milissegundos
