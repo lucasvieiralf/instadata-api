@@ -35,27 +35,3 @@ databaseChangeLog:
             stripComments: true
             endDelimiter: ";"
             encoding: UTF-8
-
-  # --- Changeset 4: Permissão de Configurações da Empresa ---
-  - changeSet:
-      id: v1.0.3-add-company-settings-permission
-      author: shin (seed)
-      changes:
-        - sqlFile:
-            path: db/changelog/v1.0.3_add_company_permission.sql
-            splitStatements: true
-            stripComments: true
-            endDelimiter: ";"
-            encoding: UTF-8
-
-  # --- Changeset 5: Ajustar tamanho do campo status ---
-  - changeSet:
-      id: v1.0.4-subscription-status-length
-      author: shin (seed)
-      changes:
-        - sqlFile:
-            path: db/changelog/v1.0.4_fix_subscription_status_length.sql
-            splitStatements: true
-            stripComments: true
-            endDelimiter: ";"
-            encoding: UTF-8

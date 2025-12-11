@@ -52,19 +52,4 @@ INSERT IGNORE INTO roles_permissions (role_id, permission_id) VALUES
 -- 6. DADOS DE TESTE PARA O SUPER_ADMIN (CRÍTICO)
 -- ---------------------------------------------------------------------------------
 INSERT IGNORE INTO users (name, email, password_hash, status, created_at, updated_at) VALUES
-('Super Admin', 'superadmin@grape.com', '$2a$10$tOKLTN8g3MUeBgq/0N0LK.ArqEclNQmBVjj0p53n3nqQxOZ0zeOk2', 'ACTIVE', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
-
--- Criar uma "empresa" fictícia chamada "Grape HQ" para o admin
-INSERT IGNORE INTO companies (trading_name, legal_name, tax_id, status, created_at, updated_at) VALUES
-('Grape HQ', 'Grape Access Manager HQ', '00000000000000', 'ACTIVE', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
-
--- Vincular o superadmin à Grape HQ com o papel SUPER_ADMIN
-INSERT IGNORE INTO company_members (user_id, company_id, role_id, status, created_at, updated_at) VALUES
-(
-  (SELECT id from users WHERE email = 'superadmin@grape.com'),
-  (SELECT id from companies WHERE tax_id = '00000000000000'),
-  (SELECT id from roles WHERE role_name = 'SUPER_ADMIN'),
-  'ACTIVE',
-  CURRENT_TIMESTAMP,
-  CURRENT_TIMESTAMP
-);
+('Super Admin', 'superadmin@instadata.com', '$2a$10$tOKLTN8g3MUeBgq/0N0LK.ArqEclNQmBVjj0p53n3nqQxOZ0zeOk2', 'ACTIVE', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);

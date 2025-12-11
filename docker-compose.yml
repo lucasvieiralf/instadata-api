@@ -6,12 +6,12 @@ services:
   # 1. Banco de Dados MySQL
   mysql-db:
     image: mysql:8
-    container_name: mysql-db-compose
+    container_name: mysql-db-compose-instadata
     ports:
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: admin
-      MYSQL_DATABASE: access_manager_db
+      MYSQL_DATABASE: instadata_db
     volumes:
       - mysql-data:/var/lib/mysql
     restart: unless-stopped # Garante que ele reinicie com o Docker (ex: ao ligar o PC)
